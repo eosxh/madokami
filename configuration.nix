@@ -37,7 +37,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # System packages
-  environment.systemPackages = with pkgs; [ waybar niri git kdePackages.konsole  xfce.thunar rofi-wayland swaybg swww fuzzel alacritty walker fastfetch starship cosmic-edit
+  environment.systemPackages = with pkgs; [ waybar hyprland git foot xfce.thunar rofi-wayland swaybg swww fastfetch starship cosmic-edit
   ];
   
   fonts = {
@@ -52,6 +52,6 @@
   # System version
   system.stateVersion = "25.05";
 
-programs.niri.enable = true;
+programs.hyprland.enable = true;
 
 }
