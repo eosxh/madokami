@@ -37,7 +37,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # System packages
-  environment.systemPackages = with pkgs; [ waybar hyprland git foot xfce.thunar rofi-wayland swaybg swww fastfetch starship cosmic-edit
+  environment.systemPackages = with pkgs; [ waybar hyprland git foot matugen xfce.thunar rofi-wayland swaybg swww fastfetch starship cosmic-edit
   ];
   
   fonts = {
