@@ -5,3 +5,7 @@
 input_path = '$HOME/.config/matugen/templates/colors.conf'
 output_path = '$HOME/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
+
+[templates.foot]
+input_path = '$HOME/.config/matugen/templates/foot.ini'
+output_path = '$HOME/.config/foot/foot.ini'
