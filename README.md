@@ -21,7 +21,4 @@ and window colors are configured directly in **Hyprland**.
 
 
 
-## Installation 🚀
 
- (looking for
-  <a href="https://github.com/eosxh/madokami/wiki/Installation">Installation</a>)
