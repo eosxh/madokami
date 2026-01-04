@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# ARCH LINUX INSTALLATION SCRIPT for madokami
+
+set -e
+
+echo "Starting package installation for Arch Linux..."
+
+AUR_HELPER=""
+
+# Check for paru or yay
+if command -v paru &> /dev/null; then
+    echo "paru detected."
+    AUR_HELPER="paru"
+elif command -v yay &> /dev/null; then
+    echo "yay detected."
+    AUR_HELPER="yay"
+else
+    echo "Neither paru nor yay is installed. Installing yay..."
+
+    # Install dependencies
+    echo "Installing dependencies..."
+    sudo pacman -S --needed --noconfirm git base-devel
+
+    # Clone and build yay
+    echo "Building yay..."
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay-bin
+
+    echo "yay installed successfully!"
+    AUR_HELPER="yay"
+fi
+
+# Update package lists
+echo "Updating package lists with $AUR_HELPER..."
+$AUR_HELPER -Sy --noconfirm
+
+# Install packages
+echo "Installing packages: hyprland matugen fuzzel waybar waypaper swengine fastfetch timeshift flatpak swww"
+$AUR_HELPER -S --noconfirm hyprland matugen fuzzel waybar waypaper swengine fastfetch timeshift flatpak swww
+
+# Verify installation
+echo "Verifying installation..."
+for package in hyprland matugen fuzzel waybar waypaper swengine fastfetch timeshift flatpak swww ; do
+    if pacman -Qi $package >/dev/null 2>&1; then
+        echo "✓ $package installed successfully"
+    else
+        echo "✗ $package installation failed"
+    fi
+done
+
+echo "Installation completed!"
